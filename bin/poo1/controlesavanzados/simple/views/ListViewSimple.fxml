@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" 
+minWidth="-Infinity" prefHeight="361.0" prefWidth="404.0" 
+xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+fx:controller="poo1.controlesavanzados.simple.controllers.ListViewSimpleController">
+   <children>
+      <Label layoutX="40.0" layoutY="40.0" text="Personaje" />
+      <TextField fx:id="txtPersonaje" layoutX="112.0" layoutY="36.0" />
+      <Button layoutX="300.0" layoutY="36.0" mnemonicParsing="false" onAction="#handleAgregarPersonajeButton" text="Agregar" />
+      <ListView fx:id="lvListaPersonajes" layoutX="40.0" layoutY="118.0" prefHeight="194.0" prefWidth="323.0" />
+      <Label layoutX="40.0" layoutY="101.0" text="Lista personajes" />
+      <Button layoutX="296.0" layoutY="324.0" mnemonicParsing="false" onAction="#handleEliminarPersonajeButton" text="Eliminar" />
+   </children>
+</AnchorPane>

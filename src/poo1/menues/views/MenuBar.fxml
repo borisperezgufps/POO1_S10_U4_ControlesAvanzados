@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+
+<MenuBar fx:id="myMenuBar" xmlns="http://javafx.com/javafx/17"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="poo1.menues.controllers.MenuBarController">
+	<menus>
+		<Menu mnemonicParsing="false" text="Inclusión">
+			<items>
+				<MenuItem mnemonicParsing="false"
+					onAction="#handleIncluirAmigoMenu" text="Amigo" />
+				<MenuItem mnemonicParsing="false"
+					onAction="#handleIncluirMascotaMenu" text="Mascota" />
+			</items>
+		</Menu>
+		<Menu mnemonicParsing="false" text="Visualización">
+			<items>
+				<MenuItem mnemonicParsing="false" text="Amigo" />
+				<MenuItem mnemonicParsing="false" text="Mascota" />
+			</items>
+		</Menu>
+		<Menu mnemonicParsing="false" text="Ayuda">
+			<items>
+				<MenuItem mnemonicParsing="false"
+					onAction="#handleInicioMenu" text="Inicio" />
+			</items>
+		</Menu>
+	</menus>
+</MenuBar>
+

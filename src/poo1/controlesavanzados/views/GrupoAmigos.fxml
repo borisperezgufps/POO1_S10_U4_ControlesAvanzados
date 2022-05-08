@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="475.0" prefWidth="600.0" style="-fx-padding: 5px;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="poo1.controlesavanzados.controllers.GrupoAmigosController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="296.0" minWidth="10.0" prefWidth="105.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="503.0" minWidth="10.0" prefWidth="495.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints />
+    <RowConstraints maxHeight="161.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="128.0" minHeight="0.0" prefHeight="43.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="269.0" minHeight="10.0" prefHeight="208.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="266.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <ListView fx:id="lvGrupoAmigos" prefHeight="178.0" prefWidth="471.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <Label text="Amigos" GridPane.rowIndex="2" />
+      <Label text="Amigos grupo" GridPane.rowIndex="3" />
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+         <children>
+            <ComboBox fx:id="cmbAmigos" prefHeight="25.0" prefWidth="205.0" />
+            <Button mnemonicParsing="false" onAction="#handleAgregarAmigoGrupo" text="Agregar a grupo" />
+         </children>
+      </HBox>
+      <Button mnemonicParsing="false" onAction="#handleAceptar" text="Aceptar" GridPane.rowIndex="4" />
+      <Button mnemonicParsing="false" onAction="#handleRetirarAmigoGrupo" text="Eliminar" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <Label text="Nuevo amigo" GridPane.rowIndex="1" />
+      <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="490.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <children>
+            <TextField fx:id="txtNuevoAmigo" />
+            <Button mnemonicParsing="false" onAction="#handleAgregarAmigoButton" text="Agregar amigo" />
+         </children>
+      </HBox>
+      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnSpan="2">
+         <image>
+            <Image url="@../../../../resources/friends.png" />
+         </image>
+      </ImageView>
+   </children>
+</GridPane>
