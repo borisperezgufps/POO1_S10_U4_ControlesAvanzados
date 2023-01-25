@@ -65,6 +65,7 @@ public class ComboBoxSimpleController implements Initializable {
 			}
 		}
 		
+		
 	}
 	
 	private ObservableList<String> obtenerRangoEdadOpcion_1(){
