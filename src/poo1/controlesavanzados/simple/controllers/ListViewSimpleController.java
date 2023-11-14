@@ -1,6 +1,7 @@
 package poo1.controlesavanzados.simple.controllers;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -10,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import poo1.controlesavanzados.model.Fachada;
 
 public class ListViewSimpleController implements Initializable{
 
@@ -21,10 +23,22 @@ public class ListViewSimpleController implements Initializable{
 	
 	private ObservableList<String> listaPersonajes;
 	
+	private Fachada f = new Fachada();
+	
 	public ListViewSimpleController() {
 		listaPersonajes = FXCollections.observableArrayList();
 		listaPersonajes.add("Mariela");
 		listaPersonajes.add("Marisol");
+	}
+	
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		
+		ArrayList<String> lista = f.getListaContactosListView();
+		lvListaPersonajes.getItems().addAll(lista);
+		
+//		lvListaPersonajes.setItems(listaPersonajes);
+		
 	}
 	
 	@FXML
@@ -49,19 +63,23 @@ public class ListViewSimpleController implements Initializable{
 	
 	@FXML
 	public void handleEliminarPersonajeButton(ActionEvent event) {
+		
 		String personajeSeleccionado = lvListaPersonajes.getSelectionModel().getSelectedItem();
-		for(String nombrePers : listaPersonajes) {
-			if(nombrePers.equals(personajeSeleccionado)) {
-				listaPersonajes.remove(nombrePers);
-			}
-		}
+		f.eliminarAmigo(personajeSeleccionado);
+		
+		ArrayList<String> lista = f.getListaContactosListView();
+		lvListaPersonajes.getItems().clear();
+		lvListaPersonajes.getItems().addAll(lista);
+		
+		
+//		for(String nombrePers : listaPersonajes) {
+//			if(nombrePers.equals(personajeSeleccionado)) {
+//				listaPersonajes.remove(nombrePers);
+//			}
+//		}
 		
 	}
 
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		lvListaPersonajes.setItems(listaPersonajes);
-		
-	}
+	
 	
 }

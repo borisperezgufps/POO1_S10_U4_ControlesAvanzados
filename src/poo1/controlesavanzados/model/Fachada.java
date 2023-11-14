@@ -7,9 +7,12 @@ public class Fachada {
 	private ArrayList<String> listaAmigos;
 	private ArrayList<String> listaAmigosGrupo;
 	
+	private ArrayList<Amigo> listaContactosListView;
+	
 	public Fachada() {
 		listaAmigos = new ArrayList<String>();
 		listaAmigosGrupo = new ArrayList<String>();
+		listaContactosListView = new ArrayList<Amigo>();
 		
 		listaAmigos.add("Rafael Sepúlveda");
 		listaAmigos.add("Allison Rodríguez");
@@ -20,12 +23,48 @@ public class Fachada {
 		listaAmigos.add("Victor Angarita");
 		listaAmigos.add("Paola Romero");
 		
+		listaContactosListView.add(new Amigo("Marisol", "3133339999"));
+		listaContactosListView.add(new Amigo("Rafael", "3001235678"));
+		listaContactosListView.add(new Amigo("Cesar", "3125678450"));
+		
 	}
 	
 	public String agregarAmigo(String amigo) {
 		listaAmigos.add(amigo);
 		String mensaje = "Amigo agregado satisfactoriamente";
 		return mensaje;
+	}
+	
+	public boolean eliminarAmigo(String texto) {
+		
+		// "Rafael - 3001235678"
+		
+		
+		String[] resultado = texto.split(" - ");
+		// resultado[0] = "Rafael"
+		// resultado[1] = "3001235678"
+		int i = 0;
+		for(Amigo am : listaContactosListView) {
+			if(am.getNombre().equals(resultado[0])) {
+				listaContactosListView.remove(i);
+				return true;
+			}
+			i++;
+		}
+		
+		
+		return false;
+	}
+	
+	public ArrayList<String> getListaContactosListView(){
+		
+		ArrayList<String> lista = new ArrayList<String>();
+		
+		for(Amigo am : listaContactosListView) {
+			lista.add(am.getNombre() + " - " + am.getTelefono());
+		}
+		
+		return lista;
 	}
 	
 	public ArrayList<String> generarListaAmigosInicial(){

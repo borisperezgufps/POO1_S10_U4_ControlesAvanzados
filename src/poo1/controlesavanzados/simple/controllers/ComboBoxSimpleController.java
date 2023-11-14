@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import poo1.controlesavanzados.model.Fachada;
 
 public class ComboBoxSimpleController implements Initializable {
 
@@ -22,6 +23,10 @@ public class ComboBoxSimpleController implements Initializable {
 	private ComboBox<String> cmbRangoEdadOp2;
 	@FXML
 	private TextField txtRangoSeleccionado;
+	@FXML
+	private TextField txtNombreAmigo;
+	
+	private Fachada f = new Fachada();
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -42,8 +47,10 @@ public class ComboBoxSimpleController implements Initializable {
 		 * El método obtenerRangoEdadOpcion_2 está simulando lo que podría
 		 * ser la invocación a la clase Fachada.
 		 */
-		ArrayList<String> listaItems = obtenerRangoEdadOpcion_2();
-		cmbRangoEdadOp1.getItems().addAll(listaItems);
+		//ArrayList<String> listaItems = obtenerRangoEdadOpcion_2();
+		
+		ArrayList<String> listaAmigos = f.generarListaAmigosInicial();
+		cmbRangoEdadOp1.getItems().addAll(listaAmigos);
 		
 		/*
 		 * ------------------------
@@ -57,6 +64,7 @@ public class ComboBoxSimpleController implements Initializable {
 		 * ser la invocación a la clase Fachada.
 		 */
 		ArrayList<String> listaItemsOp2 = obtenerRangoEdadOpcion_2();
+		
 		if(listaItemsOp2!=null) {
 			for(String rango : listaItemsOp2) {
 				if(!rango.equals("71+ años")) {
@@ -70,9 +78,12 @@ public class ComboBoxSimpleController implements Initializable {
 	
 	private ObservableList<String> obtenerRangoEdadOpcion_1(){
 		ObservableList<String> items = FXCollections.observableArrayList();
-		items.addAll("18 - 23 años", "24 - 30 años", "31 - 50 años", "51 - 70 años", "71+ años");
 		
-		
+		items.addAll("18 - 23 años", 
+				"24 - 30 años", 
+				"31 - 50 años", 
+				"51 - 70 años", 
+				"71+ años");
 		
 		return items;
 	}
@@ -90,8 +101,41 @@ public class ComboBoxSimpleController implements Initializable {
 	}
 	
 	public void handleSeleccionarRangoButton(ActionEvent event) {
-		String rango = cmbRangoEdadOp2.getValue();
-		txtRangoSeleccionado.setText(rango);
+		String amigo = cmbRangoEdadOp1.getValue();
+		String rangoEdad = cmbRangoEdad.getValue();
+		
+		txtRangoSeleccionado.setText(amigo + " - " + rangoEdad);
+		
+		System.out.println(f.agregarAmigo(amigo + " - " + rangoEdad));
+		
+		refrescarCombo();
 	}
+	
+	@FXML
+	public void agregarAmigo(ActionEvent e) {
+		String nombre = txtNombreAmigo.getText();
+		System.out.println(f.agregarAmigo(nombre));
+		refrescarCombo();
+		
+	}
+	
+	private void refrescarCombo() {
+		ArrayList<String> listaAmigos = f.generarListaAmigosInicial();
+		cmbRangoEdadOp1.getItems().clear();
+		
+		cmbRangoEdadOp1.getItems().addAll(listaAmigos);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }
